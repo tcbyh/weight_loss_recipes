@@ -31,7 +31,8 @@ def cluster_ys(y_counter_items_sorted, delta_y_thr):
 
 
 def main(capture_dir, vis_capture=False, vis_thumbnail=False):
-    with open('recipe_thumbnails.csv', 'w') as f:
+    csv_res_file = Path(capture_dir) / 'recipe_thumbnails.csv'
+    with open(csv_res_file, 'w') as f:
         f.write('capture,x,y,w,h\n')
 
     captures = sorted(Path(capture_dir).glob('*.jpg'))
@@ -91,7 +92,7 @@ def main(capture_dir, vis_capture=False, vis_thumbnail=False):
                 cv2.imshow('recipe_thumbnail_img', recipe_thumbnail_img)
                 cv2.waitKey(0)
 
-            with open('recipe_thumbnails.csv', 'a') as f:
+            with open(csv_res_file, 'a') as f:
                 f.write(f'{capture.name},{x},{y},{w},{h}\n')
 
         if vis_capture:
@@ -107,4 +108,4 @@ def main(capture_dir, vis_capture=False, vis_thumbnail=False):
 
 
 if __name__ == '__main__':
-    main('capture_recipe_thumbnail')
+    main('captures')
