@@ -78,7 +78,7 @@ class LifeStyleDietPlan:
 
 
 def main():
-    pdp = PersonalDietPlan('male', 32, 170, 80)
+    pdp = LifeStyleDietPlan('male', 32, 170, 80)
 
     pdp.export()
 
