@@ -14,18 +14,18 @@ def cluster_ys(y_counter_items_sorted, delta_y_thr):
 
     clusters = []
     current_cluster = [y_counter_items_sorted[0]]
-    
+
     for i in range(1, len(y_counter_items_sorted)):
         # 计算当前元素与前一个元素的差值
         assert y_counter_items_sorted[i][0] > y_counter_items_sorted[i-1][0], f'{y_counter_items_sorted[i][0] = }, {y_counter_items_sorted[i-1][0] = }'
         delta_y = y_counter_items_sorted[i][0] - y_counter_items_sorted[i-1][0]
-        
+
         if delta_y <= delta_y_thr:
             current_cluster.append(y_counter_items_sorted[i])
         else:
             clusters.append(current_cluster)
             current_cluster = [y_counter_items_sorted[i]]
-    
+
     clusters.append(current_cluster)  # 添加最后一个聚类
     return clusters
 
